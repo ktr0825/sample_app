@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to the Sample App!"
       log_in @user
+      remember @user
       redirect_to @user
     else
       render 'new'
@@ -24,4 +25,5 @@ private
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
   end
+
 end
